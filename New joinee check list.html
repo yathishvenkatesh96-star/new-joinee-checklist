@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Kit Acknowledgement Form</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .company-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        
+        .form-title {
+            font-size: 18px;
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .employee-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9ff;
+            border-radius: 8px;
+        }
+        
+        .field-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .field-group label {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .field-group input {
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        
+        .field-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            margin: 30px 0 15px;
+            padding: 10px;
+            background: #667eea;
+            color: white;
+            border-radius: 6px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        
+        th {
+            background: #f8f9ff;
+            padding: 12px;
+            text-align: left;
+            font-size: 13px;
+            font-weight: 600;
+            color: #333;
+            border: 1px solid #e0e0e0;
+        }
+        
+        td {
+            padding: 12px;
+            border: 1px solid #e0e0e0;
+            font-size: 14px;
+        }
+        
+        tr:hover {
+            background: #f8f9ff;
+        }
+        
+        .checkbox-cell {
+            text-align: center;
+            width: 60px;
+        }
+        
+        .checkbox-cell input {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+        
+        .qty-cell {
+            text-align: center;
+            width: 60px;
+            font-weight: 600;
+            color: #667eea;
+        }
+        
+        .asset-tag {
+            background: #fff3cd;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #856404;
+        }
+        
+        .signature-section {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .signature-box {
+            padding: 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            background: #f8f9ff;
+        }
+        
+        .signature-box h3 {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .signature-field {
+            margin-bottom: 15px;
+        }
+        
+        .signature-field label {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .signature-field input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+        }
+        
+        .signature-line {
+            margin-top: 30px;
+            border-top: 2px solid #333;
+            padding-top: 5px;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .terms {
+            margin-top: 30px;
+            padding: 15px;
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            border-radius: 4px;
+            font-size: 12px;
+            line-height: 1.6;
+            color: #856404;
+        }
+        
+        .terms h4 {
+            margin-bottom: 10px;
+            font-size: 13px;
+        }
+        
+        .print-btn {
+            background: #667eea;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+        
+        .print-btn:hover {
+            background: #5568d3;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .print-btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="company-name"><B><U>KARLE INFRA PVT. LTD.</U></B></div>
+            <div class="form-title">New Joiner Welcome Kit - Acknowledgement Form</div>
+        </div>
+        
+        <div class="employee-details">
+            <div class="field-group">
+                <label>Employee Name</label>
+                <input type="text" id="empName">
+            </div>
+            <div class="field-group">
+                <label>Employee ID</label>
+                <input type="text" id="empId">
+            </div>
+            <div class="field-group">
+                <label>Designation</label>
+                <input type="text" id="designation">
+            </div>
+            <div class="field-group">
+                <label>Department</label>
+                <input type="text" id="department">
+            </div>
+            <div class="field-group">
+                <label>Date of Joining</label>
+                <input type="date" id="doj">
+            </div>
+            <div class="field-group">
+                <label>Workstation Number</label>
+                <input type="text" id="workstation">
+            </div>
+            <div class="field-group">
+                <label>Reporting Manager</label>
+                <input type="text" id="manager">
+            </div>
+            <div class="field-group">
+                <label>Issue Date</label>
+                <input type="date" id="issueDate">
+            </div>
+        </div>
+        
+        <div class="section-title">📋 STATIONERY & OFFICE SUPPLIES</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Sl. No.</th>
+                    <th>Item Description</th>
+                    <th>Qty</th>
+                    <th>Received (✓)</th>
+                    <th>Remarks</th>
+                </tr>
+            </thead>
+            <tbody id="stationeryItems"></tbody>
+        </table>
+        
+        <div class="section-title">🔑 COMPANY ASSETS (Returnable)</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Sl. No.</th>
+                    <th>Asset Description</th>
+                    <th>Qty</th>
+                    <th>Asset ID / Serial No.</th>
+                    <th>Received (✓)</th>
+                    <th>Condition</th>
+                </tr>
+            </thead>
+            <tbody id="assetItems"></tbody>
+        </table>
+        
+        <div class="section-title">🎁 WELCOME KIT (Branded Items)</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Sl. No.</th>
+                    <th>Item Description</th>
+                    <th>Qty</th>
+                    <th>Received (✓)</th>
+                    <th>Remarks</th>
+                </tr>
+            </thead>
+            <tbody id="welcomeItems"></tbody>
+        </table>
+        
+        <div class="terms">
+            <h4>⚠️ Important Terms & Conditions:</h4>
+            <ul style="margin-left: 20px; margin-top: 5px;">
+                <li>All items marked as "Company Assets" are returnable and must be returned in good condition upon separation or when requested.</li>
+                <li>Employee is responsible for the safekeeping of all issued items, especially access cards and keys.</li>
+                <li>Loss or damage to company property may result in deductions from salary as per company policy.</li>
+                <li>Access cards are non-transferable and for personal use only.</li>
+            </ul>
+        </div>
+        
+        <div class="signature-section">
+            <div class="signature-box">
+                <h3>Issued & Verified By (Admin)</h3>
+                <div class="signature-field">
+                    <label>Name:</label>
+                    <input type="text">
+                </div>
+                <div class="signature-field">
+                    <label>Employee ID:</label>
+                    <input type="text">
+                </div>
+                <div class="signature-field">
+                    <label>Date:</label>
+                    <input type="date">
+                </div>
+                <div class="signature-line">Signature</div>
+            </div>
+            
+            <div class="signature-box">
+                <h3>Received & Acknowledged By (Employee)</h3>
+                <div class="signature-field">
+                    <label>Name:</label>
+                    <input type="text">
+                </div>
+                <div class="signature-field">
+                    <label>Employee ID:</label>
+                    <input type="text">
+                </div>
+                <div class="signature-field">
+                    <label>Date:</label>
+                    <input type="date">
+                </div>
+                <div class="signature-line">Signature</div>
+            </div>
+        </div>
+        
+        <button class="print-btn" onclick="window.print()">🖨️ Print Form</button>
+    </div>
+    
+    <script>
+        const stationeryData = [
+            { item: "Diary / Notebook", qty: 1 },
+            { item: "Pen (Blue/Black)", qty: 1 },
+            { item: "Pencil", qty: 2 },
+            { item: "Eraser", qty: 1 },
+            { item: "Sharpener", qty: 1 },
+            { item: "Ruler (30cm)", qty: 1 },
+            { item: "Highlighter ", qty: 1 },
+            { item: "Stapler with Pins (Box)", qty: "1+1" },
+            { item: "Paper Punch Machine", qty: 1 },
+            { item: "Scissors", qty: 1 },
+            { item: "Glue Stick", qty: 1 },
+            { item: "Paper Clips (Box)", qty: 1 },
+            { item: "Post-it Notes (Pad)", qty: 1 },
+            { item: "Pen Stand", qty: 1 },
+            { item: "Calculator", qty: 1 }
+
+
+
+        ];
+        
+        const assetData = [
+            { item: "Workstation Key & Pedestal Key", qty: "1 " },
+            { item: "Access Card (RFID)", qty: 1 },
+                ];
+        
+        const welcomeData = [
+            { item: "Branded Water Bottle", qty: 1 },
+            { item: "Branded Coffee Mug", qty: 1 },
+            { item: "Branded Cap", qty: 1 },
+            { item: "Branded Pen", qty: 1 },
+            { item: "Branded Yoyo", qty: 1 },
+            { item: "Branded customized welcome kit", qty: 1 },
+            
+        ];
+        
+        function populateTable(tableId, data, includeAssetFields = false) {
+            const tbody = document.getElementById(tableId);
+            data.forEach((row, index) => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${row.item}</td>
+                    <td class="qty-cell">${row.qty}</td>
+                    ${includeAssetFields ? '<td><input type="text" style="width: 100%; padding: 5px; border: 1px solid #ddd; border-radius: 4px;"></td>' : ''}
+                    <td class="checkbox-cell"><input type="checkbox"></td>
+                    ${includeAssetFields ? 
+                        '<td><select style="width: 100%; padding: 5px; border: 1px solid #ddd; border-radius: 4px;"><option>Good</option><option>Fair</option><option>Damaged</option></select></td>' :
+                        '<td><input type="text" style="width: 100%; padding: 5px; border: 1px solid #ddd; border-radius: 4px;"></td>'
+                    }
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+        
+        populateTable('stationeryItems', stationeryData);
+        populateTable('assetItems', assetData, true);
+        populateTable('welcomeItems', welcomeData);
+        
+        // Set today's date for issue date
+        document.getElementById('issueDate').valueAsDate = new Date();
+    </script>
+</body>
+</html>
